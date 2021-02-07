@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Getter
-public class posts {
+public class Posts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class posts {
     private String author;
 
     @Builder
-    public posts(String title, String content, String author) {
+    public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;
