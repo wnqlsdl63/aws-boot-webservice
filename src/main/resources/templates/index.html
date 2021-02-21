@@ -35,8 +35,8 @@
     </thead>
     <tbody id="tbody">
     <tr th:each="posts : ${postsList}">
-      <td th:text="${posts.title}"></td>
-      <td th:text="${posts.id}" th:href="|/posts/update/${{posts.id}}|"></td>
+      <td th:text="${posts.id}"></td>
+      <td th:inline="text"><a th:href="|/posts/update/${{posts.id}}|">[[${posts.title}]]</a></td>
       <td th:text="${posts.author}"></td>
       <td th:text="${posts.modifiedDate}"></td>
     </tr>
