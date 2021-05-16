@@ -2,7 +2,6 @@ package com.jubin.example.springboot.config.auth;
 
 import com.jubin.example.springboot.config.auth.dto.OAuthAttributes;
 import com.jubin.example.springboot.config.auth.dto.SessionUser;
-import com.jubin.example.springboot.domain.user.Role;
 import com.jubin.example.springboot.domain.user.User;
 import com.jubin.example.springboot.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -52,9 +51,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 oAuth2User.getAttributes());
 
         User user = saveOrupdate(attributes);
-
-        System.out.println("user.getRoleKey() ="+user.getRoleKey());
-        System.out.println("Role.GUEST = "+ Role.GUEST);
 
         // 세션에 사용자 정보를 저장하기 위한 DTO 클래스
         httpSession.setAttribute("user", new SessionUser(user));
