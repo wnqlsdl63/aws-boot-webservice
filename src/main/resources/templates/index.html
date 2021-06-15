@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/common/header.html :: header" >
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>SpringBoot WebService By JuBin</h1>
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-6">
+      <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+<!--      {{#userName}}-->
+      <th:block th:if="${userName != null}">
+          Logged in as: <span th:text="${userName}" id="user"></span>
+          <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+      </th:block>
+      <th:block th:unless="${userName != null}">
+          <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+          <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+      </th:block>
+    </div>
+  </div>
+  <br>
+ <th:block th:if="${userName != null}">
+  <!-- 목록 출력 영역 -->
+  <table class="table table-horizontal table-bordered">
+    <thead class="thead-strong">
+    <tr>
+      <th>게시글번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>최종수정일</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    <tr th:each="posts : ${postsList}">
+      <td th:text="${posts.id}"></td>
+      <td th:inline="text"><a th:href="|/posts/update/${{posts.id}}|">[[${posts.title}]]</a></td>
+      <td th:text="${posts.author}"></td>
+      <td th:text="${posts.modifiedDate}"></td>
+    </tr>
+    </tbody>
+  </table>
+ </th:block>
+</div>
+</body>
+<th:block th:replace="fragments/common/footer.html :: footer" />
+</html>
