@@ -26,7 +26,8 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
         }
         System.out.println("test");
-        
+        System.out.println("test3");
+
         return "index";
     }
 
