@@ -4,16 +4,14 @@ jdk:
 branches:
    only:
       - master
-      -
 # Travis CI 서버의 Home
   cache:
     directories:
       - '$HOME/.m2/repository'
       - '$HOME/.gradle'
-      -
 script: "./gradlew build -x test"
-# CI 실행 완료시 메일로 알람
 
+# CI 실행 완료시 메일로 알람
 notifications:
   email:
     recipients:
